@@ -32,6 +32,11 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'cover.apps.CoverConfig',
+    'training.apps.TrainingConfig',
+    'addbloc.apps.AddblocConfig',
+    'games.apps.GamesConfig',
+    'compet.apps.CompetConfig',
+    'social.apps.SocialConfig',
     'stats.apps.StatsConfig',
     'django.contrib.admin',
     'django.contrib.auth',

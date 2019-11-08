@@ -21,6 +21,11 @@ from django.conf.urls import include
 urlpatterns = [
 
     url(r'^', include("cover.urls")),
+    url(r'^training/', include("training.urls")),
+    url(r'^addbloc/', include("addbloc.urls")),
+    url(r'^games/', include("games.urls")),
+    url(r'^compet/', include("compet.urls")),
+    url(r'^social/', include("social.urls")),
     url(r'^stats/', include("stats.urls")),
     #url(r'^admin/', admin.site.urls),
 ]
