@@ -7,7 +7,7 @@ header,
   background: linear-gradient(
                      rgba(20,20,20, .5),
                      rgba(20,20,20, .5)),
-                     url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg');
+                     url('../img/climbing-wall.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
