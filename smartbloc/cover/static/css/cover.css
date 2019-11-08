@@ -1,20 +1,13 @@
-html,
-body,
-header,
-
-.view {
-  height: 100%;
+html, body {
   background: linear-gradient(
                      rgba(20,20,20, .5),
                      rgba(20,20,20, .5)),
-                     url('../img/climbing-wall.jpg');
-  background-repeat: no-repeat;
+                     url('../img/climbing-wall.jpg')
+                     no-repeat
+                     center center
+                     fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-position: center center;
-  mask-image: url(masks.svg#mask1);
-}
-
-
-main{
-  padding-top: 150px;
 }
