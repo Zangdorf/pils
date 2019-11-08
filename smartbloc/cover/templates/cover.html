@@ -1,10 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    {% load static %}
     <meta charset="UTF-8">
     <title>Smart Bloc</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
 </head>
+
 <body>
-<h1>This is cover page</h1>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <strong>Smart Bloc</strong>
+            </a>
+
+            <span class="navbar-text">Bienvenue, Laura !</span>
+
+        </div>
+        </div>
+    </nav>
+    <!--Navbar-->
+
+    <!-- Main content -->
+    <div class="view">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="row">
+                    <div class="col">
+                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'img/img_training.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="/training/" class="btn btn-danger btn-block mx-auto">Entraînement</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'img/img_addbloc.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="/addbloc/" class="btn btn-danger btn-block mx-auto">Créer un bloc</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'img/img_games.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="/games/" class="btn btn-danger btn-block mx-auto">Jeux</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100 my-4"></div>
+                    <div class="col">
+                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'img/img_compet.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="/compet/" class="btn btn-danger btn-block mx-auto">Compet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'img/img_social.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="/social/" class="btn btn-danger btn-block mx-auto">Social</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'img/img_stats.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <a href="/stats/" class="btn btn-danger btn-block mx-auto">Stats</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main content -->
+
 </body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/cover.js' %}"></script>
+
 </html>
