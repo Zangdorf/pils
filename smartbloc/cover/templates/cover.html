@@ -6,7 +6,9 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>Smart Bloc</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/cover.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
 
@@ -31,16 +33,51 @@
     <div style="height : 100vh">
         <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
-                        <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'img/img_training.png' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <a href="/training/" class="btn btn-danger btn-block mx-auto">Entraînement</a>
-                            </div>
+                <div class="row justify-content-center">
+                    <a href="/training" class="menu-item">
+                        <div class="menu-icon-wrapper">
+                            <img class="menu-icon" src="{% static 'icons/training.png' %}" alt="Card image cap">
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
+                        <p class="menu-label">ENTRAINEMENT</p>
+                    </a>
+
+                    <a href="/addblock" class="menu-item">
+                        <div class="menu-icon-wrapper">
+                            <img class="menu-icon" src="{% static 'icons/add.png' %}" alt="Card image cap">
+                        </div>
+                        <p class="menu-label">CREER UN BLOC</p>
+                    </a>
+
+                    <a href="/games" class="menu-item">
+                        <div class="menu-icon-wrapper">
+                            <img class="menu-icon" src="{% static 'icons/game.png' %}" alt="Card image cap">
+                        </div>
+                        <p class="menu-label">JEUX</p>
+                    </a>
+
+                    <a href="/compet" class="menu-item">
+                        <div class="menu-icon-wrapper">
+                            <img class="menu-icon" src="{% static 'icons/chrono.png' %}" alt="Card image cap">
+                        </div>
+                        <p class="menu-label">COMPET</p>
+                    </a>
+
+
+                    <a href="/social" class="menu-item">
+                        <div class="menu-icon-wrapper">
+                            <img class="menu-icon" src="{% static 'icons/social.png' %}" alt="Card image cap">
+                        </div>
+                        <p class="menu-label">SOCIAL</p>
+                    </a>
+
+
+                    <a href="/stats" class="menu-item">
+                        <div class="menu-icon-wrapper">
+                            <img class="menu-icon" src="{% static 'icons/stats.png' %}" alt="Card image cap">
+                        </div>
+                        <p class="menu-label">STATISTIQUES</p>
+                    </a>
+                    <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 py-4">
                         <div class="card mx-auto p-1 wow zoomIn" style="width: 18rem;">
                             <img class="card-img-top" src="{% static 'img/img_addbloc.png' %}" alt="Card image cap">
                             <div class="card-body">
@@ -79,7 +116,7 @@
                                 <a href="/stats/" class="btn btn-danger btn-block mx-auto">Stats</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -88,9 +125,15 @@
 
 </body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 <script src="{% static 'js/wow.min.js' %}"></script>
 <script src="{% static 'js/cover.js' %}"></script>
 
