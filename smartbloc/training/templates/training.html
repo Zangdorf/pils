@@ -38,7 +38,7 @@
                             <label>Difficulté : </label>
                             <select>
                                 <option value="easy">Facile</option>
-                                <option value="normal">Normal</option>
+                                <option value="mid">Normal</option>
                                 <option value="hard">Difficile</option>
                             </select>
                         </div>
@@ -69,20 +69,20 @@
 <script src="{% static 'js/cover.js' %}"></script>
 
 <script>
-document.getElementById('startButton').onclick = function(e) {
-    const select = document.getElementsByTagName('select')[0];
-    const difficulty = select.options[select.selectedIndex].value;
-    
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/training/showImage', );
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            alert('GO');
-        }
-    };
-    xhr.send('difficulty=' + difficulty);
-}
+    document.getElementById('startButton').onclick = function (e) {
+        const select = document.getElementsByTagName('select')[0];
+        const difficulty = select.options[select.selectedIndex].value;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/training/showImage?difficulty=' + difficulty);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert('GO');
+            }
+        };
+        xhr.send();
+    }
 </script>
 
 </html>
