@@ -6,7 +6,12 @@
   <div class="container-fluid h-100 mt-5">
     <div class="row h-100 justify-content-center align-items-center mx-5">
       <div class="row">
-        <h1 style="color:white;">This is ADDBLOC index !</h1>
+        <h2>Connexion</h2>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Connexion</button>
+        </form>
       </div>
     </div>
   </div>

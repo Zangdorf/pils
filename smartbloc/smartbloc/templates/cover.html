@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/cover.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="height : 100vh">
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="row justify-content-center">
+        <a href="/training" class="menu-item">
+          <div class="menu-icon-wrapper">
+            <img class="menu-icon" src="{% static 'icons/training.png' %}" alt="Card image cap">
+          </div>
+          <p class="menu-label">ENTRAINEMENT</p>
+        </a>
+
+        <a href="/addblock" class="menu-item">
+          <div class="menu-icon-wrapper">
+            <img class="menu-icon" src="{% static 'icons/add.png' %}" alt="Card image cap">
+          </div>
+          <p class="menu-label">CREER UN BLOC</p>
+        </a>
+
+        <a href="/games" class="menu-item">
+          <div class="menu-icon-wrapper">
+            <img class="menu-icon" src="{% static 'icons/game.png' %}" alt="Card image cap">
+          </div>
+          <p class="menu-label">JEUX</p>
+        </a>
+
+        <a href="/compet" class="menu-item">
+          <div class="menu-icon-wrapper">
+            <img class="menu-icon" src="{% static 'icons/chrono.png' %}" alt="Card image cap">
+          </div>
+          <p class="menu-label">COMPET</p>
+        </a>
+
+
+        <a href="/social" class="menu-item">
+          <div class="menu-icon-wrapper">
+            <img class="menu-icon" src="{% static 'icons/social.png' %}" alt="Card image cap">
+          </div>
+          <p class="menu-label">SOCIAL</p>
+        </a>
+
+
+        <a href="/stats" class="menu-item">
+          <div class="menu-icon-wrapper">
+            <img class="menu-icon" src="{% static 'icons/stats.png' %}" alt="Card image cap">
+          </div>
+          <p class="menu-label">STATISTIQUES</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'cover.apps.CoverConfig',
     'training.apps.TrainingConfig',
     'addbloc.apps.AddblocConfig',
     'games.apps.GamesConfig',
@@ -61,7 +60,7 @@ ROOT_URLCONF = 'smartbloc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'smartbloc/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,6 +71,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "smartbloc/static")
 ]
 
 WSGI_APPLICATION = 'smartbloc.wsgi.application'

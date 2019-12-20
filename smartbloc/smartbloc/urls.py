@@ -17,15 +17,17 @@ from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path
 from django.conf.urls import include
+from . import views
 
 urlpatterns = [
-
-    url(r'^', include("cover.urls")),
     url(r'^training/', include("training.urls")),
     url(r'^addbloc/', include("addbloc.urls")),
     url(r'^games/', include("games.urls")),
     url(r'^compet/', include("compet.urls")),
     url(r'^social/', include("social.urls")),
     url(r'^stats/', include("stats.urls")),
-    #url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+
+    url(r'^$', views.cover, name='cover'),
+    url(r'cover/$', views.cover, name='cover'),
 ]

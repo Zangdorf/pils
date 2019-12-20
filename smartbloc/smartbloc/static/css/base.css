@@ -1,0 +1,17 @@
+*, button, select, option {
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+html, body {
+  background: linear-gradient(
+                     rgba(20,20,20, .5),
+                     rgba(20,20,20, .5)),
+                     url('../img/climbing-wall.jpg')
+                     no-repeat
+                     center center
+                     fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
