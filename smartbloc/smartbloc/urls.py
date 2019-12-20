@@ -30,4 +30,7 @@ urlpatterns = [
 
     url(r'^$', views.cover, name='cover'),
     url(r'cover/$', views.cover, name='cover'),
+    url(r'^register/$', views.register, name='register'),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', views.logout, name='logout'),
 ]

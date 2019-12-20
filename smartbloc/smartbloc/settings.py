@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'compet.apps.CompetConfig',
     'social.apps.SocialConfig',
     'stats.apps.StatsConfig',
+    'smartbloc.apps.SmartblocConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

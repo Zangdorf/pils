@@ -19,7 +19,13 @@
       <a class="navbar-brand" href="/">
         <strong>Smart Bloc</strong>
       </a>
-      <span class="navbar-text">Bienvenue, Laura !</span>
+
+      {% if request.session.user %}
+        <span class="navbar-text">{{ request.session.user.email }}</span>
+        <a href="/logout">Déconnexion</a>
+      {% else %}
+        <a href="/login">Connexion</a>
+      {% endif %}
     </div>
   </nav>
   <!--Navbar-->
@@ -29,7 +35,6 @@
   <script src="{% static 'js/jquery.slim.min.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/wow.min.js' %}"></script>
 
   {% block scripts %}{% endblock %}
 </body>
