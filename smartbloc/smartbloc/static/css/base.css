@@ -31,7 +31,7 @@ html, body {
 }
 
 button, .button {
-  background-color: #b70000;
+  background-color: #F46524;
   font-weight: bold;
   border: none;
   color: white;
@@ -43,7 +43,7 @@ button, .button {
 }
 
 button:hover, .button:hover {
-  background-color: #990000;
+  background-color: rgb(202, 87, 33);
 }
 
 button.button-secondary, .button-secondary {
