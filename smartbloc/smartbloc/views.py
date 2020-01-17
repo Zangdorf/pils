@@ -15,10 +15,8 @@ def register(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            queryset = User.objects.filter(email=data['email'])
-            if len(queryset) >= 1:
+            if User.is_email_taken(data['email']):
                 form.add_error('email', 'Email déjà utilisée')
-                print(form.errors)
                 return render(request, 'register.html', {'form': form})
 
             user = User(email=data['email'], password=data['password'])
@@ -37,8 +35,8 @@ def login(request):
 
             queryset = User.objects.filter(email=data['email'], password=data['password'])
             if len(queryset) >= 1:
-                u = queryset[0]
-                request.session['user'] = model_to_dict(u)
+                user = queryset[0]
+                request.session['user'] = model_to_dict(user)
 
                 return HttpResponseRedirect('/')
     else:

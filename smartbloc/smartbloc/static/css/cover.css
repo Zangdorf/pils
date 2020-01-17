@@ -11,6 +11,7 @@
 
 .menu-item:hover {
   background-color: #990000;
+  text-decoration: none;
 }
 
 .menu-icon-wrapper {
