@@ -129,3 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CAMERA_URL = 'http://192.168.0.44:8080'
+CAMERA_MARGIN_TOP = 50
+CAMERA_MARGIN_BOTTOM = 100

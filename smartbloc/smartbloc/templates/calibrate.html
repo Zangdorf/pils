@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="height : 100vh">
+  <div class="container-fluid h-100 mt-4">
+    <div class="row h-100 justify-content-center align-items-center mx-5">
+      <div class="panel">
+        <h3>Calibration</h3><br>
+        
+        <label>Margin top : </label>
+        <input id="sliderTopMargin" type="range" min="0" max="1080" value="{{ top_margin }}"><br>
+        <label>Margin bottom : </label>
+        <input id="sliderBottomMargin" type="range" min="0" max="1080" value="{{ bottom_margin }}"><br>
+
+        <img id="cameraImage" class="mt-4" width="480" height="270" src="image">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const csrftoken = "{{ csrf_token }}";
+console.log(csrftoken);
+
+const sliderTopMargin = document.getElementById('sliderTopMargin');
+const sliderBottomMargin = document.getElementById('sliderBottomMargin');
+const image = document.getElementById('cameraImage');
+
+function updateCalibration() {
+  const xhr = new XMLHttpRequest();
+  const url = '/calibrate/';
+  const params = 'marginBottom=' + sliderBottomMargin.value + '&marginTop=' + sliderTopMargin.value;
+  xhr.open('POST', url, true); 
+
+  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  xhr.onreadystatechange = function() {//Call a function when the state changes.
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      image.src = 'image?' + new Date().getTime();
+    }
+  }
+  xhr.send(params);
+}
+
+sliderTopMargin.onchange = updateCalibration;
+sliderBottomMargin.onchange = updateCalibration;
+
+</script>
+{% endblock %}
