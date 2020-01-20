@@ -1,15 +1,188 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<style>
+#canvas {
+  z-index: 100;
+}
+
+.wrapper {
+  display: flex;
+}
+
+img {
+  position: absolute;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 
-<div style="height : 100vh">
-  <div class="container-fluid h-100 mt-5">
-    <div class="row h-100 justify-content-center align-items-center mx-5">
-      <div class="row">
-        <h1 style="color:white;">This is ADDBLOC index !</h1>
+<div class="container-fluid">
+  <div class="row justify-content-center" style="margin-top: 80px; margin-bottom: 20px;">
+    <div class="panel form">
+      <div class="select-wrapper">
+        <h3>Création de bloc</h3>
+        <label>Difficulté du bloc créé : </label>
+        <select id="diffSelect">
+          <option value="easy">Facile</option>
+          <option value="mid">Normal</option>
+          <option value="hard">Difficile</option>
+        </select>
+      </div>
+
+      <button id="addButton">AJOUTER</button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="wrapper">
+      <canvas id="canvas" width="768px" height="432px"></canvas>
+      <img width="768px" height="432px" style="overflow: hidden;" src="/calibrate/image">
+    </div>
+
+    <div class="panel form ml-5">
+      <div class="select-wrapper">
+        <h3>Paramètres du cercle</h3><br>
+        <label>Rayon</label>
+        <input id="circleRadiusRange" type="range" min="5" max="100" value="5">
+        <button id="deleteButton">SUPPRIMER</button>
       </div>
     </div>
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+const csrftoken = "{{ csrf_token }}";
+
+const canvas = document.getElementById("canvas");
+const circleRadiusRange = document.getElementById("circleRadiusRange");
+const deleteButton = document.getElementById('deleteButton');
+const addButton = document.getElementById('addButton');
+const diffSelect = document.getElementById("diffSelect");
+const ctx = canvas.getContext("2d");
+
+let circles = [];
+let nextId = 0;
+
+addButton.onclick = function (e) {
+  sendBlock();
+}
+
+circleRadiusRange.onchange = function (e) {
+  const selected = getSelectedCircle();
+  selected.r = parseInt(circleRadiusRange.value);
+  render();
+}
+
+deleteButton.onclick = function (e) {
+  const selected = getSelectedCircle();
+  if (!selected) {
+    return;
+  }
+  circles = circles.filter(function (circle) {
+    return circle.id !== selected.id;
+  });
+  render();
+}
+
+function getSelectedCircle() {
+  return circles.find(function (circle) {
+    return circle.isSelected;
+  });
+}
+
+function render() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = "#FF0000";
+  ctx.fillStyle = "#FFFFFF";
+
+  circles.forEach(function (circle) {
+    if (circle.isSelected) {
+      ctx.strokeStyle = "#FF0000";
+    } else {
+      ctx.strokeStyle = "#AA0000";
+    }
+
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI);
+    ctx.stroke();
+  });
+}
+
+function isInsideCircle(x, y, circle) {
+  return x > circle.x - circle.r && x < circle.x + circle.r && y > circle.y - circle.r && y < circle.y + circle.r;
+}
+
+function selectCircle(circle) {
+  circles.filter(function (circle) {
+    return circle.isSelected;
+  }).forEach(function (circle) {
+    circle.isSelected = false;
+  });
+  circle.isSelected = true;
+
+  circleRadiusRange.value = circle.r;
+}
+
+canvas.onclick = function (e) {
+  let x;
+  let y;
+  
+  if (e.pageX || e.pageY) { 
+    x = e.pageX;
+    y = e.pageY;
+  } else { 
+    x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+    y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+  } 
+  x -= canvas.offsetLeft;
+  y -= canvas.offsetTop;
+
+  const selected = circles.find(function(circle) {
+    return isInsideCircle(x, y, circle);
+  });
+
+  if (!selected) {
+    circles.push({
+      x: x,
+      y: y,
+      r: 50,
+      id: nextId
+    });
+
+    nextId += 1;
+  } else {
+    selectCircle(selected);
+  }
+
+  render();
+}
+
+function sendBlock() {
+  const xhr = new XMLHttpRequest();
+  const url = '/addblock';
+  const data = {
+    circles: circles,
+    difficulty: diffSelect.options[diffSelect.selectedIndex].value,
+  };
+  xhr.open('POST', url, true); 
+
+  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      image.src = 'image?' + new Date().getTime();
+    }
+  }
+  xhr.send(JSON.stringify(data));
+}
+</script>
 {% endblock %}

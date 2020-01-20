@@ -91,3 +91,7 @@ form .field input {
   display: inline-block;
   margin-left: auto;
 }
+
+.select-wrapper {
+  margin-bottom: 40px;
+}
