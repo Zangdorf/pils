@@ -167,13 +167,13 @@ canvas.onclick = function (e) {
 
 function sendBlock() {
   const xhr = new XMLHttpRequest();
-  const url = '/addblock';
+  const url = '/addbloc/';
   const data = {
     circles: circles,
     difficulty: diffSelect.options[diffSelect.selectedIndex].value,
   };
-  xhr.open('POST', url, true); 
 
+  xhr.open('POST', url, true); 
   xhr.setRequestHeader("X-CSRFToken", csrftoken);
   xhr.setRequestHeader("Content-Type", "application/json");
 

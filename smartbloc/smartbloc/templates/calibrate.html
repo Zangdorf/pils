@@ -36,7 +36,7 @@ function updateCalibration() {
   xhr.setRequestHeader("X-CSRFToken", csrftoken);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-  xhr.onreadystatechange = function() {//Call a function when the state changes.
+  xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       image.src = 'image?' + new Date().getTime();
     }
