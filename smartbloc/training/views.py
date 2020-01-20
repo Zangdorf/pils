@@ -19,7 +19,7 @@ def find_bloc(difficulty):
 def create_image(circles):
     image = np.ones((1080, 1920, 3), np.uint8)
     for circle in circles:
-        cv2.circle(image, (circle["x"], circle["y"]), circle["r"], (255,255,255))
+        cv2.circle(image, (circle["x"], circle["y"]), circle["r"], (255,255,255), 5)
     return image
 
 # Create your views here.

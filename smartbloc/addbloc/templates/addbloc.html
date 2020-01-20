@@ -169,7 +169,13 @@ function sendBlock() {
   const xhr = new XMLHttpRequest();
   const url = '/addbloc/';
   const data = {
-    circles: circles,
+    circles: circles.map(function (circle) {
+      return {
+        x: Math.round(circle.x * 2.5),
+        y: Math.round(circle.y * 2.5),
+        r: Math.round(circle.r * 2.5)
+      }
+    }),
     difficulty: diffSelect.options[diffSelect.selectedIndex].value,
   };
 
