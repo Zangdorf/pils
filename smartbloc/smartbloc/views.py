@@ -13,6 +13,8 @@ import numpy as np
 import urllib
 import cv2
 
+from . import image_lib
+
 # Create your views here.
 def cover(request):
     return render(request, "cover.html")
@@ -63,16 +65,13 @@ def calibrate(request):
         return HttpResponse(status=200)
     else:
         return render(request, 'calibrate.html', {
-                'camera_url': settings.CAMERA_URL + '/video',
+            'camera_url': settings.CAMERA_URL + '/video',
             'top_margin': settings.CAMERA_MARGIN_TOP,
             'bottom_margin': settings.CAMERA_MARGIN_BOTTOM
         })
 
 def calibrate_image(request):
-    resp = urllib.request.urlopen(settings.CAMERA_URL + '/shot.jpg')
-    image = np.asarray(bytearray(resp.read()), dtype="uint8")
-    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-
+    image = image_lib.get_camera_image()
     (h, w) = image.shape[0:2]
 
     cv2.rectangle(image, (0, 0), (w, settings.CAMERA_MARGIN_TOP), (255,0,0), 2)

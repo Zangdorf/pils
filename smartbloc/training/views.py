@@ -8,6 +8,8 @@ import cv2
 
 from smartbloc.bloc_storage import blocs
 
+import smartbloc.detect_thread as detect_thread
+
 def find_bloc(difficulty):
     filtered = [b for b in blocs if b["difficulty"] == difficulty]
     if len(filtered) <= 0:
@@ -26,6 +28,10 @@ def create_image(circles):
 def training(request):
     # img = Image.open('training/static/img/bloc_default.png')
     # img.show()
+    
+    # close thread if already running
+    detect_thread.create_new_thread()
+
     return render(request, "training.html")
 
 def show(img):
@@ -40,7 +46,6 @@ def show(img):
     cv2.destroyAllWindows()
 
 def showImage(request):
-    print(request.GET)
     # img = Image.open('training/static/img/bloc_{}.png'.format(request.GET['difficulty']))
     # img = Image.open('training/static/img/test.png')
     bloc = find_bloc(request.GET['difficulty'])

@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="height : 100vh">
-  <div class="container-fluid h-100 mt-4">
-    <div class="row h-100 justify-content-center align-items-center mx-5">
-      <div class="row">
-        <form class="panel form" action="/register/" method="post">
-          <h3>Nouveau compte</h3>
-          {% csrf_token %}
+<div class="container-fluid h-100">
+  <div class="row h-100 justify-content-center align-items-center mx-5">
+    <div class="row">
+      <form class="panel form" action="/register/" method="post">
+        <h3>Nouveau compte</h3>
+        {% csrf_token %}
 
-          {{ form.errors }}
+        {{ form.errors }}
 
-          <div class="field">
-            <label>Email</label>
-            {{ form.email }}
-          </div>
+        <div class="field">
+          <label>Email</label>
+          {{ form.email }}
+        </div>
 
-          <div class="field">
-            <label>Mot de passe</label>
-            {{ form.password }}
-          </div>
+        <div class="field">
+          <label>Mot de passe</label>
+          {{ form.password }}
+        </div>
 
-          <div class="field">
-            <a class="button-secondary mr-3" href="/login">J'ai déjà un compte</a>
-            <input class="button" type="submit" value="Valider">
-          </div>
-        </form>
-      </div>
+        <div class="field">
+          <a class="button-secondary mr-3" href="/login">J'ai déjà un compte</a>
+          <input class="button" type="submit" value="Valider">
+        </div>
+      </form>
     </div>
   </div>
 </div>

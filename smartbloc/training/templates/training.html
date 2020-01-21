@@ -6,24 +6,24 @@
 {% endblock %}
 
 {% block content %}
-<div style="height : 100vh">
-  <div class="container-fluid h-100 mt-5">
-    <div class="row h-100 justify-content-center align-items-center mx-5">
-      <div class="row">
-        <div class="panel form">
-          <div class="select-wrapper">
-            <label>Difficulté : </label>
-            <select>
-              <option value="easy">Facile</option>
-              <option value="mid">Normal</option>
-              <option value="hard">Difficile</option>
-            </select>
-          </div>
-
-          <button id="startButton">DEMARRER</button>
-        </div>
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center mx-5">
+    <div class="panel form">
+      <div class="select-wrapper">
+        <label>Difficulté : </label>
+        <select>
+          <option value="easy">Facile</option>
+          <option value="mid">Normal</option>
+          <option value="hard">Difficile</option>
+        </select>
       </div>
+
+      <button id="startButton">DEMARRER</button>
     </div>
+  </div>
+
+  <div class="row justify-content-center align-items-center">
+    <img id="cameraImage" class="mt-4" width="960" height="540" src="{% static 'yolo.jpg' %}">
   </div>
 </div>
 {% endblock %}
@@ -44,5 +44,10 @@
     };
     xhr.send();
   }
+
+  const cameraImage = document.getElementById('cameraImage');
+  setInterval(function () {
+    cameraImage.src = "{% static 'yolo.jpg' %}?" + new Date().getTime();
+  }, 500);
 </script>
 {% endblock %}

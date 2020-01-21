@@ -75,7 +75,8 @@ TEMPLATES = [
 ]
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "smartbloc/static")
+    os.path.join(BASE_DIR, "smartbloc/static"),
+    os.path.join(BASE_DIR, "images")
 ]
 
 WSGI_APPLICATION = 'smartbloc.wsgi.application'
