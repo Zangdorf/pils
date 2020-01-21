@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
 
     url(r'^$', views.training, name='training'),
-    path('showImage', views.showImage),
+    path('showImage', views.show_image),
+    path('status', views.training_status),
 
 ]

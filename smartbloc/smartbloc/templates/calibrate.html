@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="height : 100vh">
-  <div class="container-fluid h-100 mt-4">
-    <div class="row h-100 justify-content-center align-items-center mx-5">
-      <div class="panel">
-        <h3>Calibration</h3><br>
-        
-        <label>Margin top : </label>
-        <input id="sliderTopMargin" type="range" min="0" max="1080" value="{{ top_margin }}"><br>
-        <label>Margin bottom : </label>
-        <input id="sliderBottomMargin" type="range" min="0" max="1080" value="{{ bottom_margin }}"><br>
+<div class="container-fluid ">
+  <div class="row justify-content-center align-items-center">
+    <div class="panel">
+      <h3>Calibration</h3><br>
+      
+      <label>Margin top : </label>
+      <input id="sliderTopMargin" type="range" min="0" max="1080" value="{{ top_margin }}"><br>
+      <label>Margin bottom : </label>
+      <input id="sliderBottomMargin" type="range" min="0" max="1080" value="{{ bottom_margin }}"><br>
 
-        <img id="cameraImage" class="mt-4" width="480" height="270" src="image">
-      </div>
+      <img id="cameraImage" class="mt-4" height="480" width="270" src="image">
     </div>
   </div>
 </div>

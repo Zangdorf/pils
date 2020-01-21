@@ -30,8 +30,6 @@ def training(request):
     # img.show()
     
     # close thread if already running
-    detect_thread.create_new_thread()
-
     return render(request, "training.html")
 
 def show(img):
@@ -45,13 +43,19 @@ def show(img):
             break
     cv2.destroyAllWindows()
 
-def showImage(request):
+def show_image(request):
     # img = Image.open('training/static/img/bloc_{}.png'.format(request.GET['difficulty']))
     # img = Image.open('training/static/img/test.png')
     bloc = find_bloc(request.GET['difficulty'])
     if bloc:
         img = create_image(bloc["circles"])
-        show(img)
+        detect_thread.create_new_thread()
+        #show(img)
     else:
         return HttpResponse(status=405)
     return HttpResponse(status=200)
+
+def training_status(request):
+    status = detect_thread.get_status()
+
+    return HttpResponse(status=200, content=status, content_type='text/plain')

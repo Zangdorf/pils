@@ -1,1 +1,44 @@
+.popup-wrapper {
+    z-index: 8000;
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(100, 100, 100, 0.6);
+
+    /* display: flex; */
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    padding: 20px;
+}
+
+.popup-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-header h1 {
+    flex-grow: 1;
+    font-size: larger;
+    margin-right: 120px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.popup-header button {
+    background-color: rgb(116, 0, 0);
+    padding: 5px 20px;
+}
+
+.popup-content p {
+    margin: 40px 0;
+}

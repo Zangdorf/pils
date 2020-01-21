@@ -22,14 +22,31 @@
     </div>
   </div>
 
-  <div class="row justify-content-center align-items-center">
-    <img id="cameraImage" class="mt-4" width="960" height="540" src="{% static 'yolo.jpg' %}">
+  <div id="cameraImageRow" class="row justify-content-center align-items-center" style="display: none;">
+    <img id="cameraImage" class="mt-4" height="640" width="360" src="{% static 'yolo.jpg' %}">w
+  </div>
+
+  <div class="popup-wrapper">
+    <div class="panel popup">
+      <div class="popup-header">
+        <h1>Résultats</h1>
+        <button onclick="closePopup()">X</button>
+      </div>
+
+      <div class="popup-content">
+        <p>Vous avez terminé ce bloc</p>
+        <button onclick="closePopup()">Ok</button>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+  let trainingStarted = false;
+  const cameraImageRow = document.getElementById('cameraImageRow');
+
   document.getElementById('startButton').onclick = function (e) {
     const select = document.getElementsByTagName('select')[0];
     const difficulty = select.options[select.selectedIndex].value;
@@ -39,15 +56,44 @@
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        alert('GO');
+        console.log('START');
+        trainingStarted = true;
+        cameraImageRow.style.display = 'flex';
       }
     };
     xhr.send();
   }
 
   const cameraImage = document.getElementById('cameraImage');
-  setInterval(function () {
-    cameraImage.src = "{% static 'yolo.jpg' %}?" + new Date().getTime();
+  var intervalId = setInterval(function () {
+    if (trainingStarted) {
+      cameraImage.src = "{% static 'yolo.jpg' %}?" + new Date().getTime();
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', '/training/status');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          if (xhr.responseText == 'done') {
+            showPopup();
+            trainingStarted = false;
+          } else if (xhr.responseText == 'failed') {
+            alert('Detection failed...');
+            trainingStarted = false;
+          }
+        }
+      };
+      xhr.send();
+    }
   }, 500);
+  
+  function closePopup() {
+    const popupWrapper = document.getElementsByClassName('popup-wrapper')[0];
+    popupWrapper.style.display = 'none';
+  }
+
+  function showPopup() {
+    const popupWrapper = document.getElementsByClassName('popup-wrapper')[0];
+    popupWrapper.style.display = 'flex';
+  }
 </script>
 {% endblock %}

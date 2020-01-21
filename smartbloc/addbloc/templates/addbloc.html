@@ -17,9 +17,8 @@ img {
 {% endblock %}
 
 {% block content %}
-
 <div class="container-fluid">
-  <div class="row justify-content-center" style="margin-top: 80px; margin-bottom: 20px;">
+  <div class="row justify-content-center">
     <div class="panel form">
       <div class="select-wrapper">
         <h3>Création de bloc</h3>
@@ -37,8 +36,8 @@ img {
 
   <div class="row justify-content-center">
     <div class="wrapper">
-      <canvas id="canvas" width="768px" height="432px"></canvas>
-      <img width="768px" height="432px" style="overflow: hidden;" src="/calibrate/image">
+      <canvas id="canvas" height="768px" width="432px"></canvas>
+      <img height="768px" width="432px" style="overflow: hidden;" src="/calibrate/image">
     </div>
 
     <div class="panel form ml-5">
@@ -185,7 +184,7 @@ function sendBlock() {
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      image.src = 'image?' + new Date().getTime();
+      alert('Bloc ajouté !');
     }
   }
   xhr.send(JSON.stringify(data));
